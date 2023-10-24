@@ -17,7 +17,6 @@ export default function Spotify() {
             "Content-Type": "application/json"
           },
         });
-      console.log({ data })
       const userInfo = {
         userId: data.id,
         userName: data.display_name
