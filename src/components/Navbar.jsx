@@ -1,13 +1,13 @@
-import React, { Profiler } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { FaSearch } from "react-icons/fa"
 import { CgProfile } from "react-icons/cg"
 import { useStateProvider } from '../utils/statePovider'
 
-export default function Navbar() {
+export default function Navbar({ navBackground }) {
   const [{ userInfo }] = useStateProvider();
   return (
-    <Container>
+    <Container navBackground={navBackground}>
       <div className="search__bar">
         <FaSearch />
         <input type="text" placeholder="Artists, songs, or podcasts" />
@@ -23,7 +23,7 @@ export default function Navbar() {
 }
 
 const Container = styled.div`
- display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
