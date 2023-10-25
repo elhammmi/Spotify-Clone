@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { reducerCases } from '../utils/Constants';
 import styled from 'styled-components';
-export default function Playlist() {
+export default function Playlists() {
     const [{ token, playlists }, dispatch] = useStateProvider();
     useEffect(() => {
         const getPlaylistData = async () => {
@@ -21,8 +21,7 @@ export default function Playlist() {
             const playlists = items.map(({ name, id }) => {
                 return { name, id }
             })
-            console.log(playlists)
-            dispatch({ type: reducerCases.SET_PLAYLIST, playlists });
+            dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
         };
         getPlaylistData();
     }, [token, dispatch]);
