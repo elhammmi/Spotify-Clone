@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { reducerCases } from '../utils/Constants';
 import styled from 'styled-components';
+
 export default function Playlists() {
     const [{ token, playlists }, dispatch] = useStateProvider();
     useEffect(() => {
@@ -25,12 +26,15 @@ export default function Playlists() {
         };
         getPlaylistData();
     }, [token, dispatch]);
+    const changeCurrentPlaylist = (selectedPlaylistId) => {
+        dispatch({ type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId });
+      };
     return (
         <Container>
             <ul>
                 {
                     playlists.map(({ name, id }) => {
-                        return <li key={id}>{name}</li>
+                        return <li key={id} onClick={()=> changeCurrentPlaylist(id)}>{name}</li>
                     })
                 }
             </ul>
